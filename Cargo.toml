@@ -6,4 +6,5 @@ edition = "2024"
 [dependencies]
 anyhow = "1.0.100"
 ash = "0.38.0"
+ash-window = "0.13.0"
 winit = "0.30.12"

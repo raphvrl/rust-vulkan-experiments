@@ -36,4 +36,22 @@ impl VulkanWindow {
     pub fn on_render(&mut self) {
         self.window.request_redraw();
     }
+
+    pub fn get_required_extensions() -> Vec<*const i8> {
+        let mut extensions = vec![ash::khr::surface::NAME.as_ptr()];
+
+        #[cfg(target_os = "windows")]
+        extensions.push(ash::khr::win32_surface::NAME.as_ptr());
+
+        #[cfg(target_os = "linux")]
+        {
+            extensions.push(ash::khr::wayland_surface::NAME.as_ptr());
+            extensions.push(ash::khr::xlib_surface::NAME.as_ptr());
+        }
+
+        #[cfg(target_os = "macos")]
+        extensions.push(ash::ext::metal_surface::NAME.as_ptr());
+
+        extensions
+    }
 }
