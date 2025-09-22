@@ -106,8 +106,8 @@ impl App {
         let pipeline = VulkanPipelineBuilder::new(&logical_device)
             .set_render_pass(render_pass.render_pass)
             .set_extent(swapchain.extent)
-            .with_vertex_spv(include_bytes!("../shaders/triangle.vert.spv"))?
-            .with_fragment_spv(include_bytes!("../shaders/triangle.frag.spv"))?
+            .with_vertex_spv(include_bytes!("../bin/triangle.vert.spv"))?
+            .with_fragment_spv(include_bytes!("../bin/triangle.frag.spv"))?
             .with_topology(ash::vk::PrimitiveTopology::TRIANGLE_LIST)
             .with_dynamic_states(&[
                 ash::vk::DynamicState::VIEWPORT,
